@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+//imported React router, switch, & link 
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 
 export default function App () {
@@ -11,7 +12,10 @@ export default function App () {
     const getMovies = () => {
       axios
         .get('http://localhost:5000/api/movies') // Study this endpoint with Postman
-        .then(response => {
+        //Shortened response to res & got the axios response in the console
+        .then(res => {
+          console.log("axios response", res.data)
+          setMovieList(res.movieList)
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
         })
@@ -27,10 +31,15 @@ export default function App () {
   };
 
   return (
+    <BrowserRouter>
     <div>
       <SavedList list={[ /* This is stretch */]} />
 
-      <div>Replace this Div with your Routes</div>
+      {/* <Route>
+        <Link to="/"></Link>
+      </Route> */}
+      <Route>Replace this Div with your Routes</Route>
     </div>
+    </BrowserRouter>
   );
 }
