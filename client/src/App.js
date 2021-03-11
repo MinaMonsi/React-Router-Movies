@@ -16,7 +16,7 @@ export default function App () {
         .get('http://localhost:5000/api/movies') // Study this endpoint with Postman
         //Shortened response to res & got the axios response in the console
         .then(res => {
-          console.log("axios response", res.data)
+           console.log("response", res.data)
           setMovieList(res.data)
           // Study this response with a breakpoint or log statements
           // and set the response data as the 'movieList' slice of state
@@ -36,9 +36,13 @@ export default function App () {
     <Switch>
     <div>
       <SavedList list={[ /* This is stretch */]} />
+
       <Route path="/">
         <MovieList movies={movieList}/>
       </Route>
+
+      <Route path='/movies/:id' component={Movie}>
+     </Route>
 
     </div>
     </Switch>
