@@ -5,6 +5,7 @@ import { Route, Switch} from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 //**imported MovieList component from Movies folder
 import MovieList from './Movies/MovieList';
+import MovieCard from './Movies/MovieCard';
 
 
 export default function App () {
@@ -43,7 +44,8 @@ export default function App () {
           <MovieList movies={movieList}/>
         </Route>
 
-        <Route path='/movies/:id'>
+        <Route path='/movies/:movieId'>
+          <MovieCard movieList={movieList}/>
         </Route>
 
       </Switch>
